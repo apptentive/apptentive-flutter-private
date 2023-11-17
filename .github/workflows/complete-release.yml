@@ -5,12 +5,12 @@ on:
     types:
     - closed
     branches:
-    - main
+    - master
 
 jobs:
   tag-and-release:
     # Run only after release PR branch is merged
-    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'releases/')
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'develop')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -34,6 +34,6 @@ jobs:
       with:
         tag_name: ${{ steps.get_tag_name.outputs.tag_name }}
         name: ${{ steps.get_tag_name.outputs.tag_name }}
-        draft: false
+        draft: true
         prerelease: false
         body_path: .scripts/changes.md
