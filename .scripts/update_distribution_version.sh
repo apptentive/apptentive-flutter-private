@@ -23,7 +23,7 @@ if [ ! -f "$pubspec_file" ]; then
 fi
 
 version_script=".version=\"$new_version\""
-yq -i -y $version_script "$pubspec_file"
+yq e -i $version_script "$pubspec_file"
 
 echo "Updated version to $new_version in $pubspec_file."
 
