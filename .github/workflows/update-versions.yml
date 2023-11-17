@@ -28,7 +28,7 @@ jobs:
         run: .scripts/update_distribution_version.sh "${{ inputs.distribution-version }}"
       
       - name: Update ApptentiveKit iOS dependency
-        run: .scripts/update_ios_version.sh ios/apptentive-flutter.podspec "${{ inputs.ios-version }}"
+        run: .scripts/update_ios_version.sh ios/apptentive_flutter.podspec "${{ inputs.ios-version }}"
 
       - name: Update ApptentiveKit Android dependency
         run: .scripts/update_android_version.sh android/build.gradle "${{ inputs.android-version }}"
