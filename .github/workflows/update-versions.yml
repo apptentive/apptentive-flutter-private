@@ -44,7 +44,7 @@ jobs:
         with:
           commit-message: "Update for ${{ inputs.distribution-version }}"
           committer: "Alchemer Mobile Team <sdks@apptentive.com>"
-          branch: "updates/${{ steps.version.outputs.version }}"
+          branch: "updates/${{ inputs.distribution-version }}"
           base: develop
           title: "Update for v${{ inputs.distribution-version }}"
           body-path: .scripts/changes.md
