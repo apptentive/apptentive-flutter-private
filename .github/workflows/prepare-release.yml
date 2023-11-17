@@ -8,7 +8,7 @@ on:
     - develop
 
 jobs:
-  tag-and-release:
+  open-release-pr:
     # Run only after release PR branch is merged
     if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'updates/')
     runs-on: ubuntu-latest
@@ -27,6 +27,6 @@ jobs:
           commit-message: "Release ${{ steps.version.outputs.version }}"
           committer: "Alchemer Mobile Team <sdks@apptentive.com>"
           branch: "releases/${{ steps.version.outputs.version }}"
-          base: main
+          base: master
           title: "Release ${{ steps.version.outputs.version }}"
           body-path: .scripts/changes.md
