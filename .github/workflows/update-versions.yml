@@ -24,11 +24,7 @@ jobs:
         with:
           ref: develop
 
-      - name: Update version in pubspec.yml
-        id: version
-        run: yq e -i '.version="${{ inputs.distribution-version }}"' pubspec.yaml
-
-      - name: Update incidental copies of distribution version
+      - name: Update distribution version plus any incidental copies
         run: .scripts/update_distribution_version.sh "${{ inputs.distribution-version }}"
       
       - name: Update ApptentiveKit iOS dependency

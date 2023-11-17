@@ -14,6 +14,19 @@ if [ $# -ne 1 ]; then
 fi
 
 new_version="$1"
+pubspec_file="pubspec.yaml"
+
+# Check if the podspec file exists
+if [ ! -f "$pubspec_file" ]; then
+    echo "Error: $pubspec_file does not exist."
+    exit 1
+fi
+
+version_script=".version=\"$new_version\""
+yq -i -y $version_script "$pubspec_file"
+
+echo "Updated version to $new_version in $pubspec_file."
+
 podspec_file="ios/apptentive_flutter.podspec"
 
 # Check if the podspec file exists
